@@ -4,6 +4,7 @@ project(cmake_test_project)
 
 # for the sake of learning and fiddling around, we do not want to install into the system's paths, but into our own
 set(CMAKE_INSTALL_PREFIX ../_install)
+set(CMAKE_CXX_FLAGS "-g -Wall")
 
 add_executable(cmake_test_executable cmake_test.cpp)
 
