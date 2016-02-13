@@ -5,8 +5,25 @@ project(cmake_test_project)
 set(CMAKE_INSTALL_PREFIX ../_install)
 # compiler flags
 set(CMAKE_CXX_FLAGS "-g -Wall")
+# source dirs
+set(APP_SOURCE_DIR sources/app)
+set(TESTS_SOURCE_DIR sources/test)
+set(RESOURCES_DIR resources)
+# source file lists
+file(GLOB_RECURSE sources ${APP_SOURCE_DIR}/*.cpp ${APP_SOURCE_DIR}/*.h)
+file(GLOB_RECURSE sources_test ${TESTS_SOURCE_DIR}/*.cpp)
+file(GLOB_RECURSE resources ${RESOURCES_DIR}/*)
 
 # the executable and the files necessary for it's creation
-add_executable(cmake_test_executable cmake_test.cpp)
+add_executable(cmake_test_executable ${sources})
 # on installation, put the executable into it's own subfolder
 install(TARGETS cmake_test_executable DESTINATION bin)
+
+# TODO
+# this copies all resource files in the build directory
+# we need this, because we want to work with paths relative to the executabl
+#file(COPY ${resources} DESTINATION resources)
+
+
+# TODO
+#add_executable(unit_tests ${sources_test} ${sources})
