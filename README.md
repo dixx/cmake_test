@@ -1,5 +1,8 @@
-# Setup
+## Goal
+This will be an example how to set up CMake for a more complex project.
+I did this to 1) learn how to CMake to 2) be able to cross-compile **dixx/Die_Chroniken_eines_namenlosen_Spiels** more easily.
 
+## Setup
 Make sure you have installed and available:
 - `gcc --version` (should be 4.7.2 or higher)
 - `g++ --version` (should be 4.7.2 or higher)
