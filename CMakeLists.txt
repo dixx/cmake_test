@@ -20,7 +20,6 @@ file(GLOB sources ${APP_SOURCE_DIR}/*.cpp ${APP_SOURCE_DIR}/*.h)
 file(GLOB sources_for_tests ${TESTS_SOURCE_DIR}/*.cpp ${TESTS_SOURCE_DIR}/*.h)
 set(sources_for_tests ${sources_for_tests} ${sources})
 list(REMOVE_ITEM sources_for_tests ${CMAKE_SOURCE_DIR}/${APP_SOURCE_DIR}/main.cpp)
-file(GLOB_RECURSE resources ${RESOURCES_DIR}/*)
 
 
 ##########################
@@ -40,7 +39,4 @@ add_executable(unit_tests ${sources_for_tests})
 # on installation, put everything where it belongs
 install(TARGETS cmake_test_executable DESTINATION .)
 install(TARGETS unit_tests DESTINATION ../_test)
-# this copies all resource files to the install directory
-file(COPY ${resources} DESTINATION resources)
-
-#message(STATUS "some impressive and important words")
+install(DIRECTORY ${RESOURCES_DIR} DESTINATION .)
