@@ -5,7 +5,7 @@ Make sure you have installed and available:
 - `make`
 - `cmake`
 
-In your project folder, switch to folder `cmake`. Here will be all the temporary build stuff.
+In your project folder, switch to folder `cmake` (create it if it doesn't exist). Here will be all the temporary build stuff.
 Depending on your OS, execute
 - *Linux/OSX*: `cmake ..`
 - *Windows*: `cmake -G "MinGW Makefiles" ..` if you have MinGW installed
