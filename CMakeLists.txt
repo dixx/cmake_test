@@ -1,29 +1,46 @@
 cmake_minimum_required(VERSION 2.8)
 project(cmake_test_project)
 
+
+##########################
+# variable declarations
+####
+
 # for the sake of learning and fiddling around, we do not want to install into the system's paths, but into our own
 set(CMAKE_INSTALL_PREFIX ../_install)
+
 # compiler flags
 set(CMAKE_CXX_FLAGS "-g -Wall")
-# source dirs
+# directories
 set(APP_SOURCE_DIR sources/app)
 set(TESTS_SOURCE_DIR sources/test)
 set(RESOURCES_DIR resources)
-# source file lists
-file(GLOB_RECURSE sources ${APP_SOURCE_DIR}/*.cpp ${APP_SOURCE_DIR}/*.h)
-file(GLOB_RECURSE sources_test ${TESTS_SOURCE_DIR}/*.cpp)
+# file lists
+file(GLOB sources ${APP_SOURCE_DIR}/*.cpp ${APP_SOURCE_DIR}/*.h)
+file(GLOB sources_for_tests ${TESTS_SOURCE_DIR}/*.cpp ${TESTS_SOURCE_DIR}/*.h)
+set(sources_for_tests ${sources_for_tests} ${sources})
+list(REMOVE_ITEM sources_for_tests ${CMAKE_SOURCE_DIR}/${APP_SOURCE_DIR}/main.cpp)
 file(GLOB_RECURSE resources ${RESOURCES_DIR}/*)
+
+
+##########################
+# build rules
+####
 
 # the executable and the files necessary for it's creation
 add_executable(cmake_test_executable ${sources})
-# on installation, put the executable into it's own subfolder
-install(TARGETS cmake_test_executable DESTINATION bin)
-
-# TODO
-# this copies all resource files in the build directory
-# we need this, because we want to work with paths relative to the executabl
-#file(COPY ${resources} DESTINATION resources)
+# the unit tests
+add_executable(unit_tests ${sources_for_tests})
 
 
-# TODO
-#add_executable(unit_tests ${sources_test} ${sources})
+##########################
+# installation rules
+####
+
+# on installation, put everything where it belongs
+install(TARGETS cmake_test_executable DESTINATION .)
+install(TARGETS unit_tests DESTINATION ../_test)
+# this copies all resource files to the install directory
+file(COPY ${resources} DESTINATION resources)
+
+#message(STATUS "some impressive and important words")
