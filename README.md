@@ -1,9 +1,10 @@
 # Setup
 
 Make sure you have installed and available:
-- `gcc`
-- `make`
-- `cmake`
+- `gcc --version` (should be 4.7.2 or higher)
+- `g++ --version` (should be 4.7.2 or higher)
+- `make --version` (should be 3.81 or higher)
+- `cmake --version` (should be 2.8 or higher)
 
 In your project folder, switch to folder `cmake` (create it if it doesn't exist). Here will be all the temporary build stuff.
 Depending on your OS, execute
