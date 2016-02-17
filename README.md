@@ -16,3 +16,10 @@ Depending on your OS, execute
 
 This will create you a perfect Makefile.
 Now you can execute `make` to build your project, and `make install` to install it into your system.
+
+## Sources
+This example is combined of information mainly from this sources:
+- http://irrlicht.sourceforge.net/forum/viewtopic.php?t=37091
+- https://cmake.org/cmake-tutorial/
+- http://stackoverflow.com/questions/21163188/most-simple-but-complete-cmake-example
+- https://tuannguyen68.gitbooks.io/learning-cmake-a-beginner-s-guide/content/chap1/chap1.html
