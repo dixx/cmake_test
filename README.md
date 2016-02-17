@@ -1,6 +1,6 @@
 ## Goal
 This will be an example how to set up CMake for a more complex project.
-I did this to 1) learn how to CMake to 2) be able to cross-compile **dixx/Die_Chroniken_eines_namenlosen_Spiels** more easily.
+I did this to 1) learn how to CMake to 2) be able to cross-compile [this project here](https://github.com/dixx/Die_Chroniken_eines_namenlosen_Spiels) more easily.
 
 ## Setup
 Make sure you have installed and available:
