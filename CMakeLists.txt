@@ -10,7 +10,15 @@ project(cmake_test_project)
 set(CMAKE_INSTALL_PREFIX ../_install)
 
 # compiler flags
-set(CMAKE_CXX_FLAGS "-g -Wall")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3")
+set(CMAKE_CXX_FLAGS_DEBUG "-D_DEBUG_MODE=1") # switch for additional debug stuff deep in the code
+set(CMAKE_CXX_FLAGS "-DNULL=0") # sadly this is required by LUA
+set(CMAKE_CXX_FLAGS "-c")
+set(CMAKE_CXX_FLAGS "-fmessage-length=0")
+set(CMAKE_CXX_FLAGS "-m32")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -Wno-aggregate-return -Wlong-long -Winline -Wunreachable-code -Wunused -Wunused-function -Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable -Wuninitialized -Wreturn-type -Wparentheses -Wpointer-arith -Wmissing-braces -Wfloat-equal -Wconversion -Wcast-align")
+
 # directories
 set(APP_SOURCE_DIR sources/app)
 set(TESTS_SOURCE_DIR sources/test)
