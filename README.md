@@ -23,3 +23,4 @@ This example is combined of information mainly from this sources:
 - https://cmake.org/cmake-tutorial/
 - http://stackoverflow.com/questions/21163188/most-simple-but-complete-cmake-example
 - https://tuannguyen68.gitbooks.io/learning-cmake-a-beginner-s-guide/content/chap1/chap1.html
+- http://voices.canonical.com/jussi.pakkanen/2013/03/26/a-list-of-common-cmake-antipatterns/
