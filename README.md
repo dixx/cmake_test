@@ -10,12 +10,23 @@ Make sure you have installed and available:
 - `cmake --version` (should be 2.8 or higher)
 
 In your project folder, switch to folder `_build` (create it if it doesn't exist). Here will be all the temporary build stuff.
-Depending on your OS, execute
+``` bash
+mkdir _build
+cd _build
+```
+Then, depending on your OS, execute
 - *Linux/OSX*: `cmake ..`
 - *Windows*: `cmake -G "MinGW Makefiles" ..` if you have MinGW installed
 
 This will create you a perfect Makefile.
 Now you can execute `make` to build your project, and `make install` to install it into your system.
+To build a debug version, run from your project folder
+``` bash
+mkdir _debug
+cd _debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+```
+and then build it as usual.
 
 ## Sources
 This example is combined of information mainly from this sources:
