@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 2.8)
 project(cmake_test_project)
 
+if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+message("OS: ${CMAKE_SYSTEM_NAME}")
+message("Build type: ${CMAKE_BUILD_TYPE}")
 
 ##########################
 # variable declarations
@@ -32,6 +38,9 @@ list(REMOVE_ITEM sources_for_tests ${CMAKE_SOURCE_DIR}/${APP_SOURCE_DIR}/main.cp
 # TODO use find_library and pass the result from that to target_link_libraries
 # NOTE target_link_libraries does not need add_dependencies afterwards
 
+include("${CMAKE_SOURCE_DIR}/irrlicht.cmake")
+include("${CMAKE_SOURCE_DIR}/irrklang.cmake")
+
 
 ##########################
 # build rules
@@ -41,6 +50,10 @@ list(REMOVE_ITEM sources_for_tests ${CMAKE_SOURCE_DIR}/${APP_SOURCE_DIR}/main.cp
 add_executable(cmake_test_executable ${sources})
 # the unit tests
 add_executable(unit_tests ${sources_for_tests})
+
+include_directories(${IRRLICHT_INCLUDE_DIR} ${IRRKLANG_INCLUDE_DIR})
+target_link_libraries(cmake_test_executable ${IRRLICHT_LIBRARY})
+target_link_libraries(unit_tests ${IRRLICHT_LIBRARY})
 
 
 ##########################
