@@ -1,0 +1,32 @@
+set(IRRKLANG_VERSION "1.5.0")
+set(IRRKLANG_PATH "${APP_SOURCE_DIR}/_irrklang")
+set(IRRKLANG_PACKAGE "irrklang-32bit-${IRRKLANG_VERSION}.zip")
+set(IRRKLANG_URL "http://www.ambiera.at/downloads/${IRRKLANG_PACKAGE}")
+set(IRRKLANG_DOWNLOAD_TARGET_FILE "${IRRKLANG_PATH}/${IRRKLANG_PACKAGE}")
+
+# TODO check if IrrKlang with the correct version is already installed
+# TODO check for an unzip program
+set(UNZIP_COMMAND "tar -xfz -- ")
+# TODO check OS
+set(IRRKLANG_INCLUDE_DIR "${IRRKLANG_PATH}/irrKlang-${IRRKLANG_VERSION}/include")
+set(IRRKLANG_LIBRARY "${IRRKLANG_PATH}/irrKlang-${IRRKLANG_VERSION}/lib/Win32-gcc/libIrrlicht.a")
+
+if(NOT EXISTS ${IRRKLANG_DOWNLOAD_TARGET_FILE})
+  message("Download ${IRRKLANG_URL}")
+  file(
+    DOWNLOAD ${IRRKLANG_URL} ${IRRKLANG_DOWNLOAD_TARGET_FILE}
+    INACTIVITY_TIMEOUT 60
+    TIMEOUT 600
+    STATUS STATUS
+    SHOW_PROGRESS
+  )
+  list(GET STATUS 0 STATUS_CODE)
+endif()
+# add_custom_command(
+#   OUTPUT "*"
+#   COMMAND ${UNZIP_COMMAND} ${IRRKLANG_DOWNLOAD_TARGET_FILE}
+#   DEPENDS ${IRRKLANG_DOWNLOAD_TARGET_FILE}
+#   WORKING_DIRECTORY "${IRRKLANG_PATH}"
+#   COMMENT "Unpack ${IRRKLANG_DOWNLOAD_TARGET_FILE}"
+#   VERBATIM
+# )

@@ -5,7 +5,8 @@ if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
    set(CMAKE_BUILD_TYPE Debug)
 endif()
 
-message("OS: ${CMAKE_SYSTEM_NAME}")
+message("OS: ${CMAKE_SYSTEM}")
+message("OS type: ${CMAKE_SYSTEM_NAME}")
 message("Build type: ${CMAKE_BUILD_TYPE}")
 
 ##########################

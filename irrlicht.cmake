@@ -1,0 +1,32 @@
+set(IRRLICHT_VERSION "1.8.3")
+set(IRRLICHT_PATH "${APP_SOURCE_DIR}/_irrlicht")
+set(IRRLICHT_PACKAGE "irrlicht-${IRRLICHT_VERSION}.zip")
+set(IRRLICHT_URL "http://downloads.sourceforge.net/irrlicht/${IRRLICHT_PACKAGE}")
+set(IRRLICHT_DOWNLOAD_TARGET_FILE "${IRRLICHT_PATH}/${IRRLICHT_PACKAGE}")
+
+# TODO check if Irrlicht with the correct version is already installed
+# TODO check for an unzip program
+set(UNZIP_COMMAND "tar -xfz -- ")
+# TODO check OS
+set(IRRLICHT_INCLUDE_DIR "${IRRLICHT_PATH}/irrlicht-${IRRLICHT_VERSION}/include")
+set(IRRLICHT_LIBRARY "${IRRLICHT_PATH}/irrlicht-${IRRLICHT_VERSION}/lib/Win32-gcc/libIrrlicht.a")
+
+if(NOT EXISTS ${IRRLICHT_DOWNLOAD_TARGET_FILE})
+  message("Download ${IRRLICHT_URL}")
+  file(
+    DOWNLOAD ${IRRLICHT_URL} ${IRRLICHT_DOWNLOAD_TARGET_FILE}
+    INACTIVITY_TIMEOUT 60
+    TIMEOUT 600
+    STATUS STATUS
+    #  SHOW_PROGRESS
+  )
+  list(GET STATUS 0 STATUS_CODE)
+endif()
+add_custom_command(
+  OUTPUT "*"
+  COMMAND ${UNZIP_COMMAND} ${IRRLICHT_DOWNLOAD_TARGET_FILE}
+  DEPENDS ${IRRLICHT_DOWNLOAD_TARGET_FILE}
+  WORKING_DIRECTORY "${IRRLICHT_PATH}"
+  COMMENT "Unpack ${IRRLICHT_DOWNLOAD_TARGET_FILE}"
+  VERBATIM
+)
